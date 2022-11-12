@@ -4,12 +4,12 @@
 
 #set -x
 
-export S3_BUCKET_BUILD
+export S3_BUCKET_BUILD="shuntagami-sam-demo"
 
 # validate
-sam validate --template template.yaml
+sam validate -t template.yaml
 aws cloudformation validate-template \
-  --template-body file://template.yaml
+  --template-url https://shuntagami-sam-demo.s3.ap-northeast-1.amazonaws.com/template.yaml
 
 # build, package, deploy
 time sam build
@@ -19,7 +19,7 @@ time sam package \
   --s3-bucket "${S3_BUCKET_BUILD}"
 
 time sam deploy \
-  --template-file packaged.yaml \
+  -t packaged.yaml \
   --stack-name iot-dynamodb \
   --capabilities CAPABILITY_IAM \
   --debug
