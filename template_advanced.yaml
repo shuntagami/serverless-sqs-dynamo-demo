@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
   Builds serverless API, complete with Lambda functions,
@@ -167,16 +167,16 @@ Resources:
   S3ToSQSFunctionPermission:
     Type: AWS::Lambda::Permission
     Properties:
-      Action: 'lambda:InvokeFunction'
+      Action: "lambda:InvokeFunction"
       FunctionName: !Ref S3ToSQSFunction
       Principal: s3.amazonaws.com
-      SourceArn: !Sub 'arn:aws:s3:::${DataBucketName}'
+      SourceArn: !Sub "arn:aws:s3:::${DataBucketName}"
       SourceAccount: !Ref AWS::AccountId
   S3ToSQSFunctionExecutionRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Principal:
@@ -187,7 +187,7 @@ Resources:
       Policies:
         - PolicyName: allowLogging
           PolicyDocument:
-            Version: '2012-10-17'
+            Version: "2012-10-17"
             Statement:
               - Effect: Allow
                 Action:
@@ -195,15 +195,15 @@ Resources:
                 Resource: arn:aws:logs:*:*:*
         - PolicyName: getObjects
           PolicyDocument:
-            Version: '2012-10-17'
+            Version: "2012-10-17"
             Statement:
               - Effect: Allow
                 Action:
                   - s3:GetObject
-                Resource: !Sub 'arn:aws:s3:::${DataBucketName}/*'
+                Resource: !Sub "arn:aws:s3:::${DataBucketName}/*"
         - PolicyName: produceToQueue
           PolicyDocument:
-            Version: '2012-10-17'
+            Version: "2012-10-17"
             Statement:
               - Effect: Allow
                 Action:
@@ -259,7 +259,7 @@ Resources:
     DependsOn: ApiDomain
     Properties:
       Name: TestApiKey
-      Enabled: 'true'
+      Enabled: "true"
       StageKeys:
         - RestApiId: !Ref DemoServerlessApi
           StageName: Prod
@@ -269,14 +269,14 @@ Resources:
     Properties:
       DomainName: !Ref SubdomainName
       RestApiId: !Ref DemoServerlessApi
-      Stage: !Sub '${DemoServerlessApiProdStage}' # logical id of API GW stage created by SAM
+      Stage: !Sub "${DemoServerlessApiProdStage}" # logical id of API GW stage created by SAM
   UsagePlan:
     Type: AWS::ApiGateway::UsagePlan
     DependsOn: ApiDomain
     Properties:
       ApiStages:
         - ApiId: !Ref DemoServerlessApi
-          Stage: !Sub '${DemoServerlessApiProdStage}'  # logical id of API GW stage created by SAM
+          Stage: !Sub "${DemoServerlessApiProdStage}" # logical id of API GW stage created by SAM
       Quota:
         Limit: 5000
         Period: MONTH
@@ -292,20 +292,20 @@ Resources:
       UsagePlanId: !Ref UsagePlan
 Outputs:
   MyStacksRegion:
-    Description: 'Region where cfn stack is located'
+    Description: "Region where cfn stack is located"
     Value: !Ref AWS::Region
   DemoBucket:
-    Description: 'S3 bucket where CSV files are placed'
+    Description: "S3 bucket where CSV files are placed"
     Value: !Ref DataBucketName
   DemoTable:
-    Description: 'Name of DynamoDB table'
+    Description: "Name of DynamoDB table"
     Value: !Ref DemoTable
   DemoQueueArn:
-    Description: 'Arn of SQS Queue'
+    Description: "Arn of SQS Queue"
     Value: !GetAtt DemoQueue.Arn
   DemoQueueUrl:
-    Description: 'URL of SQS Queue'
+    Description: "URL of SQS Queue"
     Value: !Ref DemoQueue
   GetMessagesApi:
-    Description: 'Example API Gateway endpoint: GetMessagesFunction'
+    Description: "Example API Gateway endpoint: GetMessagesFunction"
     Value: !Sub "https://${DemoServerlessApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getMessages/"

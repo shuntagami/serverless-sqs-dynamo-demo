@@ -8,15 +8,16 @@ In the post, we will explore modern application development using an event-drive
 ## Quick Start
 
 ### Prerequisites
+
 The demonstration assumes you already have an AWS account. You will need the latest copy of the AWS CLI, SAM CLI, and Python 3 installed on your development machine.
 
 Additionally, you will need two existing S3 buckets. One bucket will be used to store the packaged project files for deployment. The second bucket is where we will place CSV data files, which in turn, will trigger events that invoke multiple Lambda functions.
-
 
 ### CloudFormation Parameter
 
 Template Parameter
 CloudFormation will create and uniquely name the SQS queues and the DynamoDB table. However, to avoid circular references , a common issue, between resources associated with the S3 data bucket, it is easier to use a pre-existing bucket. To start, you will need to change the SAM template’s DataBucketName parameter’s default value to your own S3 bucket name. Again, this bucket is where we will eventually push the CSV data files. Alternately, override the default values using the sam build command, next.
+
 ```yaml
 Parameters:
   DataBucketName:
