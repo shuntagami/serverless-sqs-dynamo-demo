@@ -5,6 +5,7 @@
 #set -x
 
 export S3_BUCKET_BUILD="shuntagami-sam-demo"
+export SAM_CLI_TELEMETRY=0
 
 # validate
 sam validate -t template.yaml
