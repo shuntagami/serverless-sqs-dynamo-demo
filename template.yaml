@@ -27,7 +27,7 @@ Resources:
       Description: Get all messages in DynamoDB table (scan)
       CodeUri: lambda_apigtw_to_dynamodb/
       Handler: app.getMessages
-      Runtime: nodejs10.x
+      Runtime: nodejs16.x
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref DemoTable
@@ -45,7 +45,7 @@ Resources:
       Description: Get single message based on timestamp and location
       CodeUri: lambda_apigtw_to_dynamodb/
       Handler: app.getMessage
-      Runtime: nodejs10.x
+      Runtime: nodejs16.x
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref DemoTable
@@ -63,7 +63,7 @@ Resources:
       Description: Create new message item in DynamoDB table
       CodeUri: lambda_apigtw_to_dynamodb/
       Handler: app.postMessage
-      Runtime: nodejs10.x
+      Runtime: nodejs16.x
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref DemoTable
@@ -81,7 +81,7 @@ Resources:
       Description: Update message item in DynamoDB table
       CodeUri: lambda_apigtw_to_dynamodb/
       Handler: app.putMessage
-      Runtime: nodejs10.x
+      Runtime: nodejs16.x
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref DemoTable
@@ -99,7 +99,7 @@ Resources:
       Description: Delete message item in DynamoDB table
       CodeUri: lambda_apigtw_to_dynamodb/
       Handler: app.deleteMessage
-      Runtime: nodejs10.x
+      Runtime: nodejs16.x
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref DemoTable
@@ -117,7 +117,7 @@ Resources:
       Description: Post new message to SQS
       CodeUri: lambda_sqs_to_dynamodb/
       Handler: app.lambda_handler
-      Runtime: python3.7
+      Runtime: python3.9
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref DemoTable
@@ -195,7 +195,7 @@ Resources:
       Description: Responds to S3 Event - Sends to SQS
       CodeUri: lambda_s3_to_sqs/
       Handler: app.lambda_handler
-      Runtime: python3.7
+      Runtime: python3.9
       Role: !GetAtt S3ToSQSFunctionExecutionRole.Arn
   DemoTable:
     Type: AWS::DynamoDB::Table
