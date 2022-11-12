@@ -34,10 +34,10 @@ time sam deploy --template-file packaged.yaml \
   --capabilities CAPABILITY_IAM \
   --debug
 
-AWS_REGION=us-east-1
+AWS_REGION=ap-northeast-1
 S3_DATA_BUCKET=shuntagami-demo-data
-SQS_QUEUE_ARN=arn:aws:sqs:us-east-1:931066906971:serverless-sqs-dynamo-demo-DemoQueue-10Q1K9DRH7510
-SQS_QUEUE_URL=https://sqs.us-east-1.amazonaws.com/931066906971/serverless-sqs-dynamo-demo-DemoQueue-10Q1K9DRH7510
+SQS_QUEUE_ARN=arn:aws:sqs:ap-northeast-1:931066906971:serverless-sqs-dynamo-demo-DemoQueue-10Q1K9DRH7510
+SQS_QUEUE_URL=https://sqs.ap-northeast-1.amazonaws.com/931066906971/serverless-sqs-dynamo-demo-DemoQueue-10Q1K9DRH7510
 
 # variables (required by local lambda functions)
 TABLE_NAME=serverless-sqs-dynamo-demo-DemoTable-1AFWJE2O1N0IR

@@ -1,7 +1,7 @@
 # export variables
-export AWS_REGION=us-east-1
+export AWS_REGION=ap-northeast-1
 export TABLE_NAME=serverless-sqs-dynamo-demo-DemoTable-1JPDL7VGU0TC4
-export SQS_QUEUE_ARN=arn:aws:sqs:us-east-1:931066906971:serverless-sqs-dynamo-demo-DemoQueue-W00DO4L1I6NE
+export SQS_QUEUE_ARN=arn:aws:sqs:ap-northeast-1:931066906971:serverless-sqs-dynamo-demo-DemoQueue-W00DO4L1I6NE
 
 # run tests
 pytest test_handler.py \
