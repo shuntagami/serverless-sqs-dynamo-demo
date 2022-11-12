@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    S3_BUCKET_BUILD: "gstafford-sam-demo"
+    S3_BUCKET_BUILD: "shuntagami-sam-demo"
 
 phases:
   install:

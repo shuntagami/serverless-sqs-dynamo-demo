@@ -1,5 +1,5 @@
 # export variables
-export S3_DATA_BUCKET=gstafford-demo-data
+export S3_DATA_BUCKET=shuntagami-demo-data
 export TABLE_NAME=serverless-sqs-dynamo-demo-DemoTable-1JPDL7VGU0TC4
 
 # setup tests

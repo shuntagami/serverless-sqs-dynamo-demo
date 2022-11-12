@@ -11,7 +11,7 @@ aws ssm put-parameter \
   --overwrite
 
 # variables
-S3_BUILD_BUCKET="gstafford-sam-demo"
+S3_BUILD_BUCKET="shuntagami-sam-demo"
 STACK_NAME="serverless-sqs-dynamo-demo"
 
 # validate
@@ -35,7 +35,7 @@ time sam deploy --template-file packaged.yaml \
   --debug
 
 AWS_REGION=us-east-1
-S3_DATA_BUCKET=gstafford-demo-data
+S3_DATA_BUCKET=shuntagami-demo-data
 SQS_QUEUE_ARN=arn:aws:sqs:us-east-1:931066906971:serverless-sqs-dynamo-demo-DemoQueue-10Q1K9DRH7510
 SQS_QUEUE_URL=https://sqs.us-east-1.amazonaws.com/931066906971/serverless-sqs-dynamo-demo-DemoQueue-10Q1K9DRH7510
 
